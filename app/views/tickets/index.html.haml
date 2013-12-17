@@ -13,7 +13,7 @@
     - @tickets.each do |ticket|
       %tr
         %td= link_to ticket.id, user_ticket_path(ticket.user, ticket)
-        %td= ticket.user_id
+        %td= ticket.user
         %td= ticket.key
         %td=l ticket.created_at
         %td

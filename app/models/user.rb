@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validate :valid_referrer
 
+  def to_s
+    email
+  end
+
   private
   def valid_referrer
     if self == referrer
