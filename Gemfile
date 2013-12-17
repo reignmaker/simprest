@@ -14,6 +14,7 @@ gem 'simple_form'
 
 gem 'inherited_resources'
 
+gem 'oj'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
