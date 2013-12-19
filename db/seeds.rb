@@ -19,6 +19,6 @@ end
 
 User.find_each do |user|
   referrer_id = r.rand(1..49)
-  user.referrer_id == referrer_id ? referrer_id + 1 : referrer_id
-  user.save!
+  user.referrer_id = user.referrer_id == referrer_id ? referrer_id + 1 : referrer_id
+  user.save(:validate => false)
 end
