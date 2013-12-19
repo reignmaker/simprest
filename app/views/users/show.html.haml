@@ -7,11 +7,19 @@
   %strong= model_class.human_attribute_name(:email) + ':'
   %br
   = @user.email
-%p
-  %strong= model_class.human_attribute_name(:referrer_id) + ':'
-  %br
-  = @user.referrer_id
-
+- if @user.referrer_id
+  %p
+    %strong= model_class.human_attribute_name(:referrer_id) + ':'
+    %br
+    = @user.referrer
+.well
+  - if @user.referrals.any?
+    - @user.referrals.each do |ref|
+      %li.label.label-info= ref
+  - ref = @user.referrals.build
+  = simple_form_for ref, :url => user_invite_path(@user) do |f|
+    = f.input :email
+    = f.button :submit, 'Invite', :class => 'btn-primary'
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user), :class => 'btn'

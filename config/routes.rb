@@ -8,6 +8,9 @@ Simprest::Application.routes.draw do
     constraints :format => :json do
       get 'dump' => 'users#dump', :on => :collection, :defaults => {:format => :json}
     end
+    
+    post :invite
+
   end
   
 end
