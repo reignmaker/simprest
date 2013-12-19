@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+r = Random.new()
+
+50.times do |i| 
+
+  user = User.create(:email => "user-#{i}@mail.com")
+  r.rand(1..10).times do |j|
+    user.tickets.create
+  end
+
+end
+
+User.find_each do |user|
+  referrer_id = r.rand(1..49)
+  user.referrer_id == referrer_id ? referrer_id + 1 : referrer_id
+  user.save!
+end
