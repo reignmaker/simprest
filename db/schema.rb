@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131216190116) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tickets", force: true do |t|
     t.integer  "user_id"
     t.string   "key"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20131216190116) do
     t.datetime "updated_at"
   end
 
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -29,6 +32,6 @@ ActiveRecord::Schema.define(version: 20131216190116) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["referrer_id"], name: "index_users_on_referrer_id"
+  add_index "users", ["referrer_id"], name: "index_users_on_referrer_id", using: :btree
 
 end
