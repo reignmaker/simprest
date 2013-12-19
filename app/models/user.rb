@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :referrer, :class_name => 'User'
 
   validates :email, :presence => true
+  validates :email, :uniqueness => true
   validate :valid_referrer
 
   def to_s
